@@ -1,8 +1,10 @@
 <div class="login-form-container">
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <p>
-      <label for="login">Identifiant</label>
-      <input id="login" type="text" formControlName="login" />
+      <mat-form-field>
+        <mat-label for="login">Username</mat-label>
+        <input matInput id="login" type="text" formControlName="login" />
+      </mat-form-field>
       <span
         class="help-block"
         *ngIf="
@@ -20,8 +22,10 @@
       </span>
     </p>
     <p>
-      <label for="password">Mot de passe</label>
-      <input id="password" type="password" formControlName="password" />
+      <mat-form-field>
+        <mat-label for="password">Mot de passe</mat-label>
+        <input matInput id="password" type="text" formControlName="password" />
+      </mat-form-field>
       <span
         class="help-block"
         *ngIf="
@@ -30,15 +34,17 @@
           loginForm.controls.password.errors
         "
       >
-        @if (loginForm.controls.password.errors?.['required']) {
+        @if (loginForm.controls.password.errors['required']) {
         <span> Enter your password </span>
-        } @else if(loginForm.controls.password.errors?.['checkPassword']) {
+        } @else if(loginForm.controls.password.errors['checkPassword']) {
         <span> The password must have a minimum of 5 characters. </span>
         }
       </span>
     </p>
     <p>
-      <button type="submit" [disabled]="loginForm.invalid">Validate</button>
+      <button mat-button type="submit" [disabled]="loginForm.invalid">
+        Validate
+      </button>
     </p>
   </form>
 </div>

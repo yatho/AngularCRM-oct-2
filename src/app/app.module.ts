@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AppMaterialModule } from './app-material.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, AppMaterialModule],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
