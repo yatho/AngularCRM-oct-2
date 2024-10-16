@@ -8,9 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AppMaterialModule } from './app-material.module';
 import { DummyComponent } from './component/dummy/dummy.component';
+import { HelpComponent } from './component/help/help.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DummyComponent],
+  declarations: [AppComponent, LoginComponent, DummyComponent, HelpComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, AppMaterialModule],
   providers: [
     provideAnimationsAsync()

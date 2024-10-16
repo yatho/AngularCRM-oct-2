@@ -1,0 +1,7 @@
+@if (isError()) {
+<span class="help-block">
+  @for (msg of errors; track $index) {
+  <span>{{ msg }}</span>
+  }
+</span>
+}

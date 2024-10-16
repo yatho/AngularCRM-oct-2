@@ -5,41 +5,26 @@
         <mat-label for="login">Username</mat-label>
         <input matInput id="login" type="text" formControlName="login" />
       </mat-form-field>
-      <span
-        class="help-block"
-        *ngIf="
-          (loginForm.controls.login.touched ||
-            loginForm.controls.login.dirty) &&
-          loginForm.controls.login.errors
-        "
-      >
-        <span *ngIf="loginForm.controls.login.errors?.['required']">
-          Enter your login
-        </span>
-        <span *ngIf="loginForm.controls.login.errors?.['minlength']">
-          The login must have a minimum of 3 characters.
-        </span>
-      </span>
+      <crm-help
+        [field]="loginForm.controls.login"
+        [errorMessages]="{
+          required: 'Enter your login',
+          minlength: 'The login must have a minimum of 3 characters.'
+        }"
+      />
     </p>
     <p>
       <mat-form-field>
         <mat-label for="password">Mot de passe</mat-label>
         <input matInput id="password" type="text" formControlName="password" />
       </mat-form-field>
-      <span
-        class="help-block"
-        *ngIf="
-          (loginForm.controls.password.touched ||
-            loginForm.controls.password.dirty) &&
-          loginForm.controls.password.errors
-        "
-      >
-        @if (loginForm.controls.password.errors['required']) {
-        <span> Enter your password </span>
-        } @else if(loginForm.controls.password.errors['checkPassword']) {
-        <span> The password must have a minimum of 5 characters. </span>
-        }
-      </span>
+      <crm-help
+        [field]="loginForm.controls.password"
+        [errorMessages]="{
+          required: 'Entrez votre password',
+          checkPassword: 'The password must have a minimum of 5 characters.'
+        }"
+      />
     </p>
     <p>
       <button mat-button type="submit" [disabled]="loginForm.invalid">
