@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
@@ -10,11 +10,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 class MockComponent {}
 
+@Component({
+  selector: 'crm-dummy',
+  template: '',
+})
+class DummyMockComponent {
+  label = input();
+}
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterModule.forRoot([]), MatToolbarModule],
-      declarations: [AppComponent, MockComponent],
+      declarations: [AppComponent, MockComponent, DummyMockComponent],
     }).compileComponents();
   });
 

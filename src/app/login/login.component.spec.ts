@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { HelpComponent } from '../component/help/help.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -12,7 +13,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [LoginComponent, HelpComponent],
       imports: [ReactiveFormsModule, MatInputModule, MatButtonModule],
       providers: [provideNoopAnimations()],
     }).compileComponents();
@@ -24,5 +25,28 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should disable login button on creation', () => {
+    const element = fixture.nativeElement;
+    expect(element.querySelector('button').disabled).toBeTrue();
+  });
+
+  it('should activate login button when form is valid', () => {
+    // getting the elements
+    const buttonElement = fixture.nativeElement.querySelector('button');
+    const loginElement = fixture.nativeElement.querySelector('input#login');
+    const passwordElement =
+      fixture.nativeElement.querySelector('input#password');
+    // setting a value
+    loginElement.value = 'myLogin';
+    passwordElement.value = 'password';
+    // trigger an event
+    loginElement.dispatchEvent(new Event('input'));
+    passwordElement.dispatchEvent(new Event('input'));
+    // Ask Angular to detect changes
+    fixture.detectChanges();
+
+    expect(buttonElement.disabled).toBeFalse();
   });
 });
