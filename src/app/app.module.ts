@@ -9,9 +9,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AppMaterialModule } from './app-material.module';
 import { DummyComponent } from './component/dummy/dummy.component';
 import { HelpComponent } from './component/help/help.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DummyComponent, HelpComponent],
+  declarations: [AppComponent, LoginComponent, DummyComponent, HelpComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, AppMaterialModule],
   providers: [
     provideAnimationsAsync()
