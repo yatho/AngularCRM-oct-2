@@ -2,10 +2,27 @@
   <mat-toolbar color="primary">
     <h1>{{ title }}</h1>
     <span class="fill-remaining-space"></span>
-    <span>Right Aligned Text</span>
+    <span>
+      <a
+        mat-icon-button
+        matTooltip="Home"
+        routerLink="/home"
+        routerLinkActive="is-active"
+      >
+        <mat-icon>home</mat-icon>
+      </a>
+    </span>
+    <span>
+      <a
+        mat-icon-button
+        matTooltip="Login"
+        routerLink="/login"
+        routerLinkActive="is-active"
+      >
+        <mat-icon>person</mat-icon>
+      </a>
+    </span>
   </mat-toolbar>
 </div>
 
-<crm-dummy [label]="title" (toto)="clicked($event)" />
-
-<crm-login />
+<router-outlet />
