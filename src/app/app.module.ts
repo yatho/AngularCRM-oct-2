@@ -10,12 +10,35 @@ import { AppMaterialModule } from './app-material.module';
 import { DummyComponent } from './component/dummy/dummy.component';
 import { HelpComponent } from './component/help/help.component';
 import { HomeComponent } from './home/home.component';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
+import { jwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
+import { PhonePipe } from './common/phone.pipe';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DummyComponent, HelpComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, AppMaterialModule],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    DummyComponent,
+    HelpComponent,
+    HomeComponent,
+    PhonePipe,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    AppMaterialModule,
+  ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(
+      withInterceptors([jwtInterceptorInterceptor]),
+      withFetch()
+    ),
   ],
   bootstrap: [AppComponent],
 })

@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthenticationService } from './authentication.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'crm-login',
@@ -23,16 +24,28 @@ export class LoginComponent {
       nonNullable: true,
     }),
     password: new FormControl('', {
-      validators: [Validators.required, checkPassword],
+      validators: [Validators.required],
       nonNullable: true,
     }),
   });
 
+  constructor() {
+    this.authenticationService.disconnect();
+  }
+
   protected onSubmit(): void {
     const { login, password } = this.loginForm.getRawValue();
-    const user = this.authenticationService.authentUser(login, password);
-    console.log('authent.authentUser', user);
-    if (!!user) this.router.navigate(['/home']);
+    this.authenticationService
+      .authentUser(login, password)
+      .pipe(
+        catchError((error) => {
+          alert('Erreur au cours du login : ' + error.message);
+          return [];
+        })
+      )
+      .subscribe((user) => {
+        if (!!user) this.router.navigate(['/home']);
+      });
   }
 }
 
