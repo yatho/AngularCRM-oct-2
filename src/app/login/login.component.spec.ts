@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { HelpComponent } from '../component/help/help.component';
+import { AuthenticationService } from './authentication.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,7 +16,15 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent, HelpComponent],
       imports: [ReactiveFormsModule, MatInputModule, MatButtonModule],
-      providers: [provideNoopAnimations()],
+      providers: [
+        provideNoopAnimations(),
+        {
+          provide: AuthenticationService,
+          useValue: {
+            disconnect: () => {},
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);

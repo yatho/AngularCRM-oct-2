@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { authenticationGuard } from './login/authentication.guard';
+import { FicheComponent } from './consumer/fiche/fiche.component';
+import { ListComponent } from './consumer/list/list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,11 +14,30 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [authenticationGuard],
   },
+  {
+    path: 'consumers',
+    component: ListComponent,
+    canActivate: [authenticationGuard],
+  },
+  {
+    path: 'consumers/create',
+    component: FicheComponent,
+    canActivate: [authenticationGuard],
+  },
+  {
+    path: 'consumers/:id',
+    component: FicheComponent,
+    canActivate: [authenticationGuard],
+  },
   { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      bindToComponentInputs: true,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

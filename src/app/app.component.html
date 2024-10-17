@@ -2,16 +2,29 @@
   <mat-toolbar color="primary">
     <h1>{{ title }}</h1>
     <span class="fill-remaining-space"></span>
+    @if (authent.authenticated) {
     <span>
       <a
         mat-icon-button
         matTooltip="Home"
-        routerLink="/home"
-        routerLinkActive="is-active"
+        [routerLink]="'/home'"
+        [routerLinkActive]="'is-active'"
       >
         <mat-icon>home</mat-icon>
       </a>
     </span>
+    <span>
+      <a
+        mat-icon-button
+        matTooltip="Consumers"
+        routerLink="/consumers"
+        routerLinkActive="is-active"
+      >
+        <mat-icon>menu</mat-icon>
+      </a>
+    </span>
+    <span class="logout" (click)="disconnect()">log out</span>
+    } @else {
     <span>
       <a
         mat-icon-button
@@ -22,9 +35,8 @@
         <mat-icon>person</mat-icon>
       </a>
     </span>
+    }
   </mat-toolbar>
 </div>
-
-{{ "0248484848" | phone }}
 
 <router-outlet />

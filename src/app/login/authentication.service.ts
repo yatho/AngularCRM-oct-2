@@ -14,8 +14,8 @@ type AuthentResponse = {
   token: string;
 };
 
-const USER_STORAGE_KEY: string = 'angular-crm.user';
-const TOKEN_STORAGE_KEY: string = 'angular-crm.token';
+export const USER_STORAGE_KEY: string = 'angular-crm.user';
+export const TOKEN_STORAGE_KEY: string = 'angular-crm.token';
 
 @Injectable({
   providedIn: 'root',

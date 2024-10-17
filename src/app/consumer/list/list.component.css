@@ -1,0 +1,8 @@
+.actions {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+button {
+  cursor: pointer;
+}

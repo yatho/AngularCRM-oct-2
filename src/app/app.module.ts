@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AppMaterialModule } from './app-material.module';
 import { DummyComponent } from './component/dummy/dummy.component';
@@ -17,19 +17,23 @@ import {
 } from '@angular/common/http';
 import { jwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
 import { PhonePipe } from './common/phone.pipe';
+import { FicheComponent } from './consumer/fiche/fiche.component';
+import { ListComponent } from './consumer/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DummyComponent,
     HelpComponent,
     HomeComponent,
     PhonePipe,
+    FicheComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     AppMaterialModule,
   ],

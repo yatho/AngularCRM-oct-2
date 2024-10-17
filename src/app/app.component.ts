@@ -1,6 +1,6 @@
-import { Component, inject, OnDestroy } from '@angular/core';
-import { DemoObservableService } from './common/demo-observable.service';
-import { catchError, map, Subscription, take, tap, throwError } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { AuthenticationService } from './login/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'crm-root',
@@ -10,17 +10,15 @@ import { catchError, map, Subscription, take, tap, throwError } from 'rxjs';
 export class AppComponent {
   title = 'angularCRM-19';
 
-  // private osbService = inject(DemoObservableService);
-
-  // protected testObs = this.osbService.getObservable().pipe(
-  //   map((x) => x * 10), // Transformation of the result
-  //   tap((x) => console.log('Value received:', x)),
-  //   catchError((err) => {
-  //     return throwError(() => err);
-  //   })
-  // );
+  protected authent = inject(AuthenticationService);
+  private router = inject(Router);
 
   clicked(label: string) {
     console.log('The button was clicked', label);
+  }
+
+  disconnect(): void {
+    this.authent.disconnect();
+    this.router.navigate(['/login']);
   }
 }
