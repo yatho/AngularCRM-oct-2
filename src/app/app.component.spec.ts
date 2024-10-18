@@ -7,14 +7,18 @@ import { provideHttpClient } from '@angular/common/http';
 import { AppMaterialModule } from './app-material.module';
 
 @Component({
-  selector: 'crm-login',
-  template: '',
+    selector: 'crm-login',
+    template: '',
+    standalone: true,
+    imports: [MatToolbarModule, AppMaterialModule],
 })
 class MockComponent {}
 
 @Component({
-  selector: 'crm-dummy',
-  template: '',
+    selector: 'crm-dummy',
+    template: '',
+    standalone: true,
+    imports: [MatToolbarModule, AppMaterialModule],
 })
 class DummyMockComponent {
   label = input();
@@ -23,10 +27,9 @@ class DummyMockComponent {
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([]), MatToolbarModule, AppMaterialModule],
-      declarations: [AppComponent, MockComponent, DummyMockComponent],
-      providers: [provideHttpClient()],
-    }).compileComponents();
+    imports: [RouterModule.forRoot([]), MatToolbarModule, AppMaterialModule, MockComponent, DummyMockComponent, AppComponent],
+    providers: [provideHttpClient()],
+}).compileComponents();
   });
 
   it('should create the app', () => {

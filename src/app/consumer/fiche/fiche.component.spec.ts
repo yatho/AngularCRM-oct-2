@@ -19,15 +19,14 @@ describe('FicheComponent - Create', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FicheComponent],
-      imports: [AppMaterialModule, ReactiveFormsModule],
-      providers: [
+    imports: [AppMaterialModule, ReactiveFormsModule, FicheComponent],
+    providers: [
         { provide: ConsumerService, useValue: consumerServiceSpy },
         { provide: Location, useValue: locationSpy },
         provideHttpClient(),
         provideNoopAnimations(),
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
 
     fixture = TestBed.createComponent(FicheComponent);
     component = fixture.componentInstance;
@@ -82,15 +81,14 @@ describe('FicheComponent - Update', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FicheComponent],
-      imports: [AppMaterialModule, ReactiveFormsModule],
-      providers: [
+    imports: [AppMaterialModule, ReactiveFormsModule, FicheComponent],
+    providers: [
         { provide: ConsumerService, useValue: consumerServiceSpy },
         { provide: Location, useValue: locationSpy },
         provideHttpClient(),
         provideNoopAnimations(),
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
 
     fixture = TestBed.createComponent(FicheComponent);
     fixture.componentRef.setInput('id', 1);

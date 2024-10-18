@@ -1,14 +1,30 @@
 import { Component, DestroyRef, effect, inject, input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Consumer, ConsumerService } from '../consumer.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'crm-fiche',
-  templateUrl: './fiche.component.html',
-  styleUrl: './fiche.component.css',
+    selector: 'crm-fiche',
+    templateUrl: './fiche.component.html',
+    styleUrl: './fiche.component.css',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        MatOption,
+        MatInput,
+        MatButton,
+    ],
 })
 export class FicheComponent {
   private consumerService = inject(ConsumerService);

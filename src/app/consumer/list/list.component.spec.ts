@@ -40,26 +40,21 @@ describe('ListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListComponent],
-      imports: [AppMaterialModule, FormsModule],
-      providers: [
+    imports: [AppMaterialModule, FormsModule, ListComponent],
+    providers: [
         provideHttpClient(),
         provideNoopAnimations(),
         {
-          provide: ConsumerService,
-          useValue: consumerMockService,
+            provide: ConsumerService,
+            useValue: consumerMockService,
         },
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
 
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     consumerMockService.getList.and.returnValue(of(dummyConsumers));
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   it('should create', () => {

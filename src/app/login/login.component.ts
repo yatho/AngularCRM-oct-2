@@ -1,19 +1,27 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from './authentication.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { HelpComponent } from '../component/help/help.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'crm-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+    selector: 'crm-login',
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        HelpComponent,
+        MatButton,
+    ],
 })
 export class LoginComponent {
   private authenticationService = inject(AuthenticationService);

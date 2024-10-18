@@ -14,18 +14,17 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent, HelpComponent],
-      imports: [ReactiveFormsModule, MatInputModule, MatButtonModule],
-      providers: [
+    imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, LoginComponent, HelpComponent],
+    providers: [
         provideNoopAnimations(),
         {
-          provide: AuthenticationService,
-          useValue: {
-            disconnect: () => {},
-          },
+            provide: AuthenticationService,
+            useValue: {
+                disconnect: () => { },
+            },
         },
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;

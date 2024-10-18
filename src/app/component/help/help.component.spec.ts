@@ -9,8 +9,8 @@ describe('HelpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HelpComponent],
-    }).compileComponents();
+    imports: [HelpComponent],
+}).compileComponents();
 
     fixture = TestBed.createComponent(HelpComponent);
     component = fixture.componentInstance;
