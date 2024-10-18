@@ -2,10 +2,9 @@ import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
-    selector: 'crm-help',
-    templateUrl: './help.component.html',
-    styleUrl: './help.component.css',
-    standalone: true,
+  selector: 'crm-help',
+  templateUrl: './help.component.html',
+  styleUrl: './help.component.css',
 })
 export class HelpComponent {
   @Input()

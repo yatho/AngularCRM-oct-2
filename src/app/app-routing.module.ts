@@ -1,31 +1,36 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+
 import { authenticationGuard } from './login/authentication.guard';
-import { FicheComponent } from './consumer/fiche/fiche.component';
-import { ListComponent } from './consumer/list/list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
+  },
   {
     path: 'home',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./home/home.component').then((m) => m.HomeComponent),
     canActivate: [authenticationGuard],
   },
   {
     path: 'consumers',
-    component: ListComponent,
+    loadComponent: () =>
+      import('./consumer/list/list.component').then((m) => m.ListComponent),
     canActivate: [authenticationGuard],
   },
   {
     path: 'consumers/create',
-    component: FicheComponent,
+    loadComponent: () =>
+      import('./consumer/fiche/fiche.component').then((m) => m.FicheComponent),
     canActivate: [authenticationGuard],
   },
   {
     path: 'consumers/:id',
-    component: FicheComponent,
+    loadComponent: () =>
+      import('./consumer/fiche/fiche.component').then((m) => m.FicheComponent),
     canActivate: [authenticationGuard],
   },
   { path: '**', redirectTo: 'home' },

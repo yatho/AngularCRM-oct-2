@@ -13,7 +13,6 @@ import { MatToolbar } from '@angular/material/toolbar';
   selector: 'crm-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet, MatIcon, MatToolbar],
 })
 export class AppComponent {
