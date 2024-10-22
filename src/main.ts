@@ -9,6 +9,7 @@ import { jwtInterceptorInterceptor } from './app/jwt-interceptor.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app/app-routing.module';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -18,5 +19,6 @@ bootstrapApplication(AppComponent, {
       withInterceptors([jwtInterceptorInterceptor])
     ),
     provideRouter(routes, withComponentInputBinding()),
+    provideExperimentalZonelessChangeDetection(),
   ],
 }).catch((err) => console.error(err));
